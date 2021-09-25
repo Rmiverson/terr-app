@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../store/actions/userActions'
+import { userLogin } from '../store/actions/userActions'
 import { Redirect } from 'react-router-dom'
 import UserForm from './UserForm'
 
@@ -21,7 +21,7 @@ const Login = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(login(
+      dispatch(userLogin(
          {
             username: username,
             password: password

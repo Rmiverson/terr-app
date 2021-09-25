@@ -1,6 +1,6 @@
 const API = "http://localhost:3000/api/v1/"
 
-export const signup = (user) => {
+export const userSignup = (user) => {
    return async dispatch => {
       try {
          const resp = await fetch(API + 'signup', {
@@ -12,6 +12,7 @@ export const signup = (user) => {
             body: JSON.stringify({ user: user })
          })
          const data = await resp.json()
+         console.log(data)
          localStorage.setItem('token', data.token)
          dispatch(loginUser(data))
       } catch (error) {
@@ -20,7 +21,7 @@ export const signup = (user) => {
    }
 }
 
-export const login = (user) => {
+export const userLogin = (user) => {
    return async dispatch => {
       try {
          const resp = await fetch(API + 'login', {
@@ -61,9 +62,9 @@ export const userPersist = () => {
    }
 }
 
-export const loginUser = (user) => ({
+export const loginUser = (userObj) => ({
    type: 'LOGIN_USER',
-   payload: user
+   payload: userObj
 })
 
 export const logoutUser = () => ({

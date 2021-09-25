@@ -28,7 +28,7 @@ const Routes = () => {
          <Switch>
             <Route exact path='/login' render={() => <Login />} />
             <Route exact path='/signup' render={() => <Signup />} />
-            {!currentUser && <Redirect to="/login" />}
+            {!currentUser.id && <Redirect to="/login" />}
             <Route exact path='/' render={() => <Home />} />
          </Switch>
       </>
