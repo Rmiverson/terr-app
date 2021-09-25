@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const NavBar = (props) => {
+   const currentUser = useSelector((state) => state.currentUser)
+ 
    return (
       <nav className="navbar">
-         {!props.currentUser.id ? (
+         {!currentUser.id ? (
             <>
                <NavLink to='/login' className='link'>Login</NavLink>
                <NavLink to='/signup' className='link'>Signup</NavLink>
@@ -20,8 +22,4 @@ const NavBar = (props) => {
    )
 }
 
-const mapStateToProps = (state) => ({
-   currentUser: state.currentUser
-})
-
-export default connect(mapStateToProps, null)(NavBar)
+export default NavBar
