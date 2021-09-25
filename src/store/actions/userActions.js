@@ -61,9 +61,9 @@ export const userPersist = () => {
    }
 }
 
-export const loginUser = (userObj) => ({
+export const loginUser = (user) => ({
    type: 'LOGIN_USER',
-   payload: userObj
+   payload: user
 })
 
 export const logoutUser = () => ({
