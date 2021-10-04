@@ -12,7 +12,6 @@ export const userSignup = (user) => {
             body: JSON.stringify({ user: user })
          })
          const data = await resp.json()
-         console.log(data)
          localStorage.setItem('token', data.token)
          dispatch(loginUser(data))
       } catch (error) {

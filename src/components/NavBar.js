@@ -15,6 +15,7 @@ const NavBar = (props) => {
          ) : (
             <>
                <NavLink exact to='/' className='link'>Home</NavLink>
+               <NavLink exact to='/territories' className='link'>Territories</NavLink>
                <a href={window.location.href} className='link' onClick={props.handleLogout}>Logout</a>
             </>
          )}
