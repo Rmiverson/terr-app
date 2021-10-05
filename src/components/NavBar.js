@@ -6,17 +6,17 @@ const NavBar = (props) => {
    const currentUser = useSelector((state) => state.currentUser)
  
    return (
-      <nav className="navbar">
+      <nav className="navbar bg-black flex justify-end">
          {!currentUser.id ? (
             <>
-               <NavLink to='/login' className='link'>Login</NavLink>
-               <NavLink to='/signup' className='link'>Signup</NavLink>
+               <NavLink to='/login' className='link text-white w-32 text-center'>Login</NavLink>
+               <NavLink to='/signup' className='link text-white w-32 text-center'>Signup</NavLink>
             </>
          ) : (
             <>
-               <NavLink exact to='/' className='link'>Home</NavLink>
-               <NavLink exact to='/territories' className='link'>Territories</NavLink>
-               <a href={window.location.href} className='link' onClick={props.handleLogout}>Logout</a>
+               <NavLink exact to='/' className='link text-white w-32 text-center'>Home</NavLink>
+               <NavLink exact to='/territories' className='link text-white w-32 text-center'>Territories</NavLink>
+               <a href={window.location.href} className='link text-white w-32 text-center' onClick={props.handleLogout}>Logout</a>
             </>
          )}
       </nav>

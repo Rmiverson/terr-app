@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { allTerritoriesFetch } from '../store/actions/territoryActions'
+import Territory from './TerritoryPreviewCard'
 
 const Territories = () => {
    const fetchResponse = useSelector(state => state.allTerritories)
@@ -15,8 +16,6 @@ const Territories = () => {
 
    console.log(territories, loadStatus)
 
-
-
    if (territories.length === 0) {
       return (
          <div className='territories'> 
@@ -26,11 +25,11 @@ const Territories = () => {
    } 
 
    const renderTerritories = territories.map(terr => {
-      return (<p key={terr.id}>{terr.id}</p>)
+      return ( <Territory key={terr.id} territory={terr} /> )
    })
 
    return (
-      <div className='territories'>
+      <div className='territories grid grid-cols-3 gap-4'>
          {renderTerritories}
       </div>
    ) 

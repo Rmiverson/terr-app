@@ -16,10 +16,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run watch:css && PORT=3001 react-scripts start",
+    "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/output.css"
   },
   "eslintConfig": {
     "extends": [
@@ -40,8 +41,10 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "@tailwindcss/postcss7-compat": "^2.2.16",
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "tailwindcss": "^2.2.16"
   }
 }
