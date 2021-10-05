@@ -7,14 +7,12 @@ const Territories = () => {
    const fetchResponse = useSelector(state => state.allTerritories)
    const dispatch = useDispatch()
 
-   const loadStatus = fetchResponse.status
+   // const loadStatus = fetchResponse.status
    const territories = fetchResponse.data
 
    useEffect(() => {
       dispatch(allTerritoriesFetch())
    }, [])
-
-   console.log(territories, loadStatus)
 
    if (territories.length === 0) {
       return (

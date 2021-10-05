@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import Territories from './components/Territories'
+import Territory from './components/Territory'
 
 const Routes = () => {
    const currentUser = useSelector((state) => state.currentUser)
@@ -32,6 +33,7 @@ const Routes = () => {
             {!currentUser.id && <Redirect to="/login" />}
             <Route exact path='/' render={() => <Home />} />
             <Route exact path='/territories' render={() => <Territories />} />
+            <Route exact path='/territories/:territoryId' component={Territory} />
          </Switch>
       </>
    )
