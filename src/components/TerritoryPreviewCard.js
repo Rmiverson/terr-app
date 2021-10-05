@@ -16,7 +16,7 @@ const TerritoryPreviewCard = (props) => {
 
    return (
       <div id={territory.id} className="m-12 p-4 border-2 border-black rounded-md flex flex-col">
-         <h3 className='text-base font-medium'>Territory No. {territory.number}</h3>
+         <h3 className='text-lg font-medium'>Territory No. {territory.number}</h3>
          <p className='mt-1 text-sm'>{territory.name}</p>
          <p className='mt-1 text-sm'>{parseEnum(territory.territory_type)}</p>
          <Link to={{

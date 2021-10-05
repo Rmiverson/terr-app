@@ -3,8 +3,6 @@ import AddressPreviewCard from './AddressPreviewCard'
 
 const Territory = (props) => {
    const territory = props.location.state.territory
-   // const last_worked = new Date(territory.last_worked)
-   // const last_audited = new Date(territory.last_audited).getDate()
 
    console.log(territory)
 
@@ -33,32 +31,36 @@ const Territory = (props) => {
    }
 
    return (
-      <div>
-         <div>
-            <p>{`Territory No. ${territory.number}`}</p>
-            <p>{`Locality: ${territory.name}`}</p>
-            <p>{`Type: ${parseEnum(territory.territory_type)}`}</p>
-            <p>{`Last worked: ${formatTime(territory.last_worked)}`}</p>
-            <p>{`Last audited: ${formatTime(territory.last_audited)}`}</p>
-            <p>{`Notes: ${territory.notes}`}</p>
+      <div className='flex flex-col'>
+         <div className='border-2 border-black m-4 w-1/3 flex flex-col self-center'>
+            <div className='flex justify-center gap-x-10 mt-4'>
+               <h3 className='text-lg font-medium'>{`Territory No. ${territory.number}`}</h3>
+               <h3 className='text-lg font-medium'>{`Locality: ${territory.name}`}</h3>               
+            </div>
+
+            <div className='m-4'>
+               <p className='mt-1 text-sm'>{`Type: ${parseEnum(territory.territory_type)}`}</p>
+               <p className='mt-1 text-sm'>{`Last worked: ${formatTime(territory.last_worked)}`}</p>
+               <p className='mt-1 text-sm'>{`Last audited: ${formatTime(territory.last_audited)}`}</p>
+               <p className='mt-1 text-sm'>{`Notes: ${territory.notes}`}</p>               
+            </div>
          </div>
-         <div>
-            <ul className='m-4'>
-               <li className='flex flex-row border'>
-                  <p className='border-r-2 w-24 p-1'>Parcel No.</p>
-                  <p className='border-r-2 w-72 p-1'>Name</p>
-                  <p className='border-r-2 w-16 p-1'>PO Box</p>
-                  <p className='border-r-2 w-24 p-1'>Address No.</p>
-                  <p className='border-r-2 w-72 p-1'>Street</p>
-                  <p className='border-r-2 w-32 p-1'>City</p>
-                  <p className='border-r-2 w-16 p-1'>Zip</p>
-                  <p className='border-r-2 w-24 p-1'>Phone 1</p>
-                  <p className='border-r-2 w-24 p-1'>Phone 2</p>
-                  <p className='border-r-2 w-24 p-1'>Do Not Call</p>
-                  <p className='p-1 truncate'>Notes</p>
-               </li>
+         <div className='self-center'>
+            <table className='m-4 border-black border-b-2'>
+               <tr className='flex flex-row border-2 border-black border-b-0 bg-blue-300'>
+                  <th className='border-r-2 border-black w-24 p-1 font-bold'>Parcel No.</th>
+                  <th className='border-r-2 border-black w-72 p-1 font-bold'>Name</th>
+                  <th className='border-r-2 border-black w-24 p-1 font-bold'>PO Box</th>
+                  <th className='border-r-2 border-black w-32 p-1 font-bold'>Address No.</th>
+                  <th className='border-r-2 border-black w-72 p-1 font-bold'>Street</th>
+                  <th className='border-r-2 border-black w-32 p-1 font-bold'>City</th>
+                  <th className='border-r-2 border-black w-16 p-1 font-bold'>Zip</th>
+                  <th className='border-r-2 border-black w-32 p-1 font-bold'>Phone 1</th>
+                  <th className='border-r-2 border-black w-32 p-1 font-bold'>Phone 2</th>
+                  <th className='border-black w-24 p-1 font-bold'>Do Not Call</th>
+               </tr>
                {renderAddresses(territory.addresses)}
-            </ul>
+            </table>
          </div>
       </div>
    )
