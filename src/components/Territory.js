@@ -1,4 +1,5 @@
 import React from 'react'
+import AddressPreviewCard from './AddressPreviewCard'
 
 const Territory = (props) => {
    const territory = props.location.state.territory
@@ -17,14 +18,18 @@ const Territory = (props) => {
       }
    }
 
-   
    const formatTime = (input) => {
       const dateObj = new Date(input)
       const year = dateObj.getFullYear()
       const month = dateObj.getMonth()
       const date = dateObj.getDate()
-
       return `${month}/${date}/${year}`
+   }
+
+   const renderAddresses = (addressArr) => {
+      return addressArr.map(address => {
+         return <AddressPreviewCard key={address.id} address={address} />
+      })
    }
 
    return (
@@ -36,6 +41,24 @@ const Territory = (props) => {
             <p>{`Last worked: ${formatTime(territory.last_worked)}`}</p>
             <p>{`Last audited: ${formatTime(territory.last_audited)}`}</p>
             <p>{`Notes: ${territory.notes}`}</p>
+         </div>
+         <div>
+            <ul className='m-4'>
+               <li className='flex flex-row border'>
+                  <p className='border-r-2 w-24 p-1'>Parcel No.</p>
+                  <p className='border-r-2 w-72 p-1'>Name</p>
+                  <p className='border-r-2 w-16 p-1'>PO Box</p>
+                  <p className='border-r-2 w-24 p-1'>Address No.</p>
+                  <p className='border-r-2 w-72 p-1'>Street</p>
+                  <p className='border-r-2 w-32 p-1'>City</p>
+                  <p className='border-r-2 w-16 p-1'>Zip</p>
+                  <p className='border-r-2 w-24 p-1'>Phone 1</p>
+                  <p className='border-r-2 w-24 p-1'>Phone 2</p>
+                  <p className='border-r-2 w-24 p-1'>Do Not Call</p>
+                  <p className='p-1 truncate'>Notes</p>
+               </li>
+               {renderAddresses(territory.addresses)}
+            </ul>
          </div>
       </div>
    )
